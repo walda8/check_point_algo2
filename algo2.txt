@@ -1,0 +1,62 @@
+ALGORITHME first_problem_with_array
+VAR
+tab1 : ARRAY_OF INTEGER[4]
+tab2 : ARRAY_OF INTEGER[5]
+tab: ARRAY_OF INTEGER[10]
+i: INTEGERS
+sum:INTEGER:=0
+BEGIN
+tab:= [].concat(tab1, tab2)
+
+FOR i FROM 0 TO tab.length-1 STEP 1  DO
+Read(tab[i])
+END_FOR
+
+
+ FOR i FROM 0 TO tab.length-1 STEP 1  DO
+   IF(tab[i]<>tab[i+1]) THEN
+   sum:=sum+ tab[i]
+   END_IF
+ i:=i+1
+END_FOR
+write(sum)
+END
+
+
+ALGORITHME first_problem_with_hash_table
+
+VAR
+htab : HASH_TABLE<INTEGER,INTEGER>
+tab1 : ARRAY_OF INTEGER[4]
+tab2 : ARRAY_OF INTEGER[5]
+tab: ARRAY_OF INTEGER[10]
+i: INTEGERS
+sum:INTEGER:=0
+
+BEGIN
+
+tab:= [].concat(tab1, tab2)
+
+FOR i FROM 0 TO 9 STEP 1  DO
+Read (tab[i])
+END_FOR
+
+ FOR i FROM 0 TO 9 STEP 1  DO
+       IF (htab.lookup(tab[i]) = TRUE) THEN
+           count := htab.get(tab[i]);
+           htab.insert(tab[i],count+1);
+       ELSE
+           htab.insert(tab[i],1);
+       END_IF
+  i:= i+1;
+ END_FOR
+
+FOR i FROM 0 TO 9 STEP 1  DO
+       IF (htab.get(tab[i]) = 1) THEN
+           sum:=sum + tab[i];
+       END_IF
+        i:= i+1;
+   END_FOR
+
+   Write(sum);
+END
